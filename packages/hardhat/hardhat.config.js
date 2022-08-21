@@ -61,17 +61,22 @@ module.exports = {
   // 1. An Infura key (or similar)
   // 2. A private key for the deployer
   // DON'T PUSH THESE HERE!!!
-  // An `example.env` has been provided in the Hardhat root. Copy it and rename it `.env`
+  // An `.env` has been provided in the Hardhat root. Copy it and rename it `.env`
   // Follow the directions, and uncomment the network you wish to deploy to.
 
   networks: {
     localhost: {
       url: "http://localhost:8545",
-      /*      
-        notice no mnemonic here? it will just use account 0 of the hardhat node to deploy
-        (you can put in a mnemonic here to set the deployer locally)
-      
-      */
+      accounts: {
+        mnemonic: mnemonic(),
+      },
+    },
+    hardhat: {
+      forking: {
+        url: "https://eth-mainnet.g.alchemy.com/v2/qdGBEfRBpOdC5iBfVHpIxYzyBhK1pgy5",
+        blockNumber: 14139081,
+      },
+
     },
     rinkeby: {
       url: "https://rinkeby.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
